@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "mode",
+    "seed",
+    "repo_snapshot_sha",
+    "prompt_sha256",
+    "trace_readiness_sha256",
+    "redaction_scan_sha256",
+    "model_provider",
+    "model_name",
+    "model_version",
+    "started_at",
+    "ended_at",
+    "budget",
+    "transcript_sha256",
+    "patch_sha256",
+    "eval_before_sha256",
+    "eval_after_sha256",
+    "exclusion_reason",
+    "partition",
+    "harness",
+    "trace_corpus_id",
+    "evaluator_sha256",
+    "wrapper_prompt_sha256",
+    "common_rules_sha256"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "baseline",
+        "generic_debugging",
+        "halo_candidate"
+      ]
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "repo_snapshot_sha": {
+      "type": "string"
+    },
+    "candidate_skill_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "prompt_sha256": {
+      "type": "string"
+    },
+    "trace_readiness_sha256": {
+      "type": "string"
+    },
+    "redaction_scan_sha256": {
+      "type": "string"
+    },
+    "model_provider": {
+      "type": "string"
+    },
+    "model_name": {
+      "type": "string"
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "ended_at": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_wall_clock_minutes",
+        "max_tool_calls",
+        "max_iterations",
+        "max_retries",
+        "max_cost_usd_per_run",
+        "human_steering_after_start"
+      ],
+      "properties": {
+        "max_wall_clock_minutes": {
+          "type": "number"
+        },
+        "max_tool_calls": {
+          "type": "integer"
+        },
+        "max_iterations": {
+          "type": "integer"
+        },
+        "max_retries": {
+          "type": "integer"
+        },
+        "max_cost_usd_per_run": {
+          "type": "number"
+        },
+        "human_steering_after_start": {
+          "const": false
+        }
+      }
+    },
+    "transcript_sha256": {
+      "type": "string"
+    },
+    "patch_sha256": {
+      "type": "string"
+    },
+    "eval_before_sha256": {
+      "type": "string"
+    },
+    "eval_after_sha256": {
+      "type": "string"
+    },
+    "exclusion_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "partition": {
+      "enum": [
+        "research",
+        "dev",
+        "locked_synthetic",
+        "locked_realistic",
+        "dogfood"
+      ]
+    },
+    "harness": {
+      "type": "string"
+    },
+    "trace_corpus_id": {
+      "type": "string"
+    },
+    "evaluator_sha256": {
+      "type": "string"
+    },
+    "wrapper_prompt_sha256": {
+      "type": "string"
+    },
+    "common_rules_sha256": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "halo_candidate"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "candidate_skill_sha256": {
+            "type": "string",
+            "minLength": 32
+          }
+        },
+        "required": [
+          "candidate_skill_sha256"
+        ]
+      }
+    }
+  ]
+}

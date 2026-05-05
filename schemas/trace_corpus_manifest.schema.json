@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "corpus_id",
+    "trace_file",
+    "trace_file_sha256",
+    "source_partition",
+    "generated_at",
+    "redaction_scan_sha256",
+    "trace_readiness_sha256",
+    "task_manifest_sha256"
+  ],
+  "properties": {
+    "corpus_id": {
+      "type": "string"
+    },
+    "trace_file": {
+      "type": "string"
+    },
+    "trace_file_sha256": {
+      "type": "string"
+    },
+    "source_partition": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "redaction_scan_sha256": {
+      "type": "string"
+    },
+    "trace_readiness_sha256": {
+      "type": "string"
+    },
+    "task_manifest_sha256": {
+      "type": "string"
+    }
+  }
+}

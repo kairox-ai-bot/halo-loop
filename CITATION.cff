@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use HALO Loop in your research, please cite it as below."
+type: software
+title: "HALO Loop"
+version: 1.0.0
+date-released: 2026-05-05
+url: "https://github.com/kairox-ai/halo-loop"
+license: MIT
+authors:
+  - given-names: Philip
+    family-names: Bankier
+abstract: >
+  A trace-diagnostic loop for improving AI agent harnesses. HALO Loop analyzes
+  execution traces to surface repeated failure modes and enforces a disciplined
+  hypothesis-patch-evaluate-revert cycle with frozen eval protocols, sealed
+  holdouts, and mechanical keep/revert decisions.
+keywords:
+  - ai-agents
+  - agent-harness
+  - trace-diagnostics
+  - evaluation
+  - benchmark
+  - debugging
+repository-code: "https://github.com/kairox-ai/halo-loop"

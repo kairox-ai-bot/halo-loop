@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provider",
+    "model",
+    "version",
+    "temperature",
+    "seed_policy",
+    "input_cost_per_million",
+    "output_cost_per_million",
+    "estimated_total_usd"
+  ],
+  "properties": {
+    "provider": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "temperature": {
+      "type": "number"
+    },
+    "seed_policy": {
+      "type": "string"
+    },
+    "input_cost_per_million": {
+      "type": "number"
+    },
+    "output_cost_per_million": {
+      "type": "number"
+    },
+    "estimated_total_usd": {
+      "type": "number"
+    }
+  }
+}

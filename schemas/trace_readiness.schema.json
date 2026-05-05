@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "corpus_id",
+    "trace_file_sha256",
+    "span_count",
+    "trace_count",
+    "task_count",
+    "checks",
+    "failures",
+    "excluded_tasks",
+    "redaction_decision",
+    "decision"
+  ],
+  "properties": {
+    "corpus_id": {
+      "type": "string"
+    },
+    "trace_file_sha256": {
+      "type": "string"
+    },
+    "span_count": {
+      "type": "integer"
+    },
+    "trace_count": {
+      "type": "integer"
+    },
+    "task_count": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "checks": {
+      "type": "object"
+    },
+    "failures": {
+      "type": "array"
+    },
+    "excluded_tasks": {
+      "type": "array"
+    },
+    "redaction_decision": {
+      "enum": [
+        "pass",
+        "quarantine",
+        "not_provided"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "pass",
+        "fail",
+        "quarantine"
+      ]
+    }
+  }
+}

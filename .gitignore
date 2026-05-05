@@ -1,0 +1,52 @@
+# HALO Loop .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Benchmark artifacts (generated at runtime)
+runs/
+adjudication/
+results/
+*.result.json
+eval_before.json
+eval_after.json
+
+# Sealed manifests (never committed)
+sealed_manifests/
+*LOCKED*PRIVATE*
+*private*
+*sealed*
+
+# Trace corpora (may contain sensitive data)
+traces/
+*.trace.jsonl
+
+# Adjudication mapping (contains de-anonymization data)
+*adjudication_mapping*
+
+# Temporary files
+*.tmp
+*.bak
+/tmp/

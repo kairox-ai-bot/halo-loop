@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "partition",
+    "source",
+    "harness",
+    "known_to_skill_author",
+    "eval_command",
+    "trace_corpus_id",
+    "content_sha256",
+    "evaluator_sha256",
+    "contamination_notes"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "partition": {
+      "enum": [
+        "research",
+        "dev",
+        "locked_synthetic",
+        "locked_realistic",
+        "dogfood"
+      ]
+    },
+    "source": {
+      "type": "string"
+    },
+    "harness": {
+      "type": "string"
+    },
+    "failure_class": {
+      "type": "string"
+    },
+    "known_to_skill_author": {
+      "type": "boolean"
+    },
+    "eval_command": {
+      "type": "string"
+    },
+    "trace_corpus_id": {
+      "type": "string"
+    },
+    "content_sha256": {
+      "type": "string"
+    },
+    "evaluator_sha256": {
+      "type": "string"
+    },
+    "contamination_notes": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    }
+  }
+}

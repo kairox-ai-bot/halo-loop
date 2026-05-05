@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "mode",
+    "seed",
+    "success_before",
+    "success_after",
+    "delta_success",
+    "cost_usd",
+    "latency_seconds",
+    "regression_count",
+    "contaminated",
+    "excluded",
+    "partition",
+    "harness",
+    "trace_corpus_id",
+    "evaluator_sha256",
+    "prompt_sha256"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "baseline",
+        "generic_debugging",
+        "halo_candidate"
+      ]
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "success_before": {
+      "type": "boolean"
+    },
+    "success_after": {
+      "type": "boolean"
+    },
+    "delta_success": {
+      "type": "integer"
+    },
+    "cost_usd": {
+      "type": "number"
+    },
+    "latency_seconds": {
+      "type": "number"
+    },
+    "regression_count": {
+      "type": "integer"
+    },
+    "contaminated": {
+      "type": "boolean"
+    },
+    "excluded": {
+      "type": "boolean"
+    },
+    "exclusion_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "partition": {
+      "enum": [
+        "research",
+        "dev",
+        "locked_synthetic",
+        "locked_realistic",
+        "dogfood"
+      ]
+    },
+    "harness": {
+      "type": "string"
+    },
+    "trace_corpus_id": {
+      "type": "string"
+    },
+    "evaluator_sha256": {
+      "type": "string"
+    },
+    "prompt_sha256": {
+      "type": "string"
+    }
+  }
+}
