@@ -1,0 +1,35 @@
+{
+  "task_id": "halo_dev_missing_await_in_trace_beta",
+  "failure_class": "missing_await_in_trace",
+  "variant": {
+    "suffix": "beta",
+    "port": 8002,
+    "version": "v2"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "tool_call",
+      "tool": "fetch_data",
+      "args": {
+        "source": "api"
+      },
+      "awaited": false
+    },
+    {
+      "span_id": "s2",
+      "type": "return_value",
+      "value_repr": "<coroutine object fetch_data at 0x7f...>",
+      "is_coroutine": "runtime_async_leak::fetch_data_returned_coroutine_object_unawaited",
+      "truthy": true
+    },
+    {
+      "span_id": "s3",
+      "type": "harness_check",
+      "checked": "if result",
+      "result_type": "coroutine",
+      "treated_as": "success",
+      "actual_data": null
+    }
+  ]
+}

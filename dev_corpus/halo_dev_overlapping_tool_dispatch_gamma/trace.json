@@ -1,0 +1,49 @@
+{
+  "task_id": "halo_dev_overlapping_tool_dispatch_gamma",
+  "failure_class": "overlapping_tool_dispatch",
+  "variant": {
+    "suffix": "gamma",
+    "port": 8003,
+    "version": "v3"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "dispatch_start",
+      "tools": [
+        "weather_result",
+        "news_result"
+      ],
+      "concurrent": true
+    },
+    {
+      "span_id": "s2",
+      "type": "tool_complete",
+      "tool": "weather_result",
+      "result": {
+        "temp": "72F",
+        "condition": "sunny",
+        "city": "NYC"
+      }
+    },
+    {
+      "span_id": "s3",
+      "type": "tool_complete",
+      "tool": "news_result",
+      "result": {
+        "headline": "Breaking: tech update",
+        "category": "tech"
+      }
+    },
+    {
+      "span_id": "s4",
+      "type": "result_read",
+      "key_read": "weather_result",
+      "actual_value": {
+        "headline": "Breaking: tech update",
+        "category": "tech"
+      },
+      "expected_type": "weather_data"
+    }
+  ]
+}

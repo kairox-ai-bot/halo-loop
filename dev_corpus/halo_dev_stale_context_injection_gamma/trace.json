@@ -1,0 +1,32 @@
+{
+  "task_id": "halo_dev_stale_context_injection_gamma",
+  "failure_class": "stale_context_injection",
+  "variant": {
+    "suffix": "gamma",
+    "port": 8003,
+    "version": "v3"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "query",
+      "mode": "concise",
+      "system_prompt": "You are a helpful assistant. Respond in concise mode.",
+      "response": "Tell me about machine le..."
+    },
+    {
+      "span_id": "s2",
+      "type": "query",
+      "requested_mode": "detailed",
+      "actual_system_prompt": "You are a helpful assistant. Respond in concise mode.",
+      "response": "Tell me about machine le..."
+    },
+    {
+      "span_id": "s3",
+      "type": "cache_check",
+      "cache_hit": true,
+      "cached_mode": "concise",
+      "requested_mode": "detailed"
+    }
+  ]
+}

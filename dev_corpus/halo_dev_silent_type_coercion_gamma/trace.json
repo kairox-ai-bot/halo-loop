@@ -1,0 +1,36 @@
+{
+  "task_id": "halo_dev_silent_type_coercion_gamma",
+  "failure_class": "silent_type_coercion",
+  "variant": {
+    "suffix": "gamma",
+    "port": 8003,
+    "version": "v3"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "model_output",
+      "tool": "fetch_record",
+      "arguments": {
+        "record_id": 1
+      },
+      "argument_types": {
+        "record_id": "int"
+      }
+    },
+    {
+      "span_id": "s2",
+      "type": "api_call",
+      "url": "/api/records/1",
+      "expected_url": "/api/records/001",
+      "coerced_value": "runtime_coercion_observed::int_1_became_unpadded_str_1",
+      "original_value": 1
+    },
+    {
+      "span_id": "s3",
+      "type": "result",
+      "found": false,
+      "note": "ID '1' does not match any record; database uses zero-padded '001' format"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "task_id": "halo_dev_harness_eval_false_positive_beta",
+  "failure_class": "harness_eval_false_positive",
+  "variant": {
+    "suffix": "beta",
+    "port": 8002,
+    "version": "v2"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "eval_input",
+      "model_output": {
+        "summary": "wrong content",
+        "length": 5
+      },
+      "expected_keys": [
+        "title",
+        "body",
+        "tags",
+        "author"
+      ]
+    },
+    {
+      "span_id": "s2",
+      "type": "scoring",
+      "keys_matched": 0,
+      "expected_total": 4,
+      "score": 0
+    },
+    {
+      "span_id": "s3",
+      "type": "threshold_check",
+      "score": 0,
+      "original_max": 4,
+      "max_after_reassignment": "runtime_eval_bug::threshold_mutated_from_4_to_score_0",
+      "passed": true,
+      "note": "max_score reassigned to score (0), so 0 >= 0 is True"
+    }
+  ]
+}

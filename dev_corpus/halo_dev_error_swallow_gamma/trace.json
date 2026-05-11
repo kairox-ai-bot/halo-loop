@@ -1,0 +1,49 @@
+{
+  "task_id": "halo_dev_error_swallow_gamma",
+  "failure_class": "error_swallow",
+  "variant": {
+    "suffix": "gamma",
+    "port": 8003,
+    "version": "v3"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "tool_input",
+      "function": "lookup_user",
+      "args": {
+        "user_id": "abc123"
+      },
+      "note": "string passed, not int"
+    },
+    {
+      "span_id": "s2",
+      "type": "exception",
+      "exception_type": "ValueError",
+      "message": "user_id must be int, got str",
+      "caught": true
+    },
+    {
+      "span_id": "s3",
+      "type": "tool_return",
+      "returned": {
+        "status": "error",
+        "message": "user_id must be int, got str"
+      }
+    },
+    {
+      "span_id": "s4",
+      "type": "harness_check",
+      "checked": "if result",
+      "result_truthy": true,
+      "treated_as": "success",
+      "actual_return": {
+        "ok": true,
+        "user": {
+          "status": "error",
+          "message": "user_id must be int, got str"
+        }
+      }
+    }
+  ]
+}

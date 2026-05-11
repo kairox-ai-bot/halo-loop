@@ -1,0 +1,41 @@
+{
+  "task_id": "halo_dev_off_by_one_in_loop_gamma",
+  "failure_class": "off_by_one_in_loop",
+  "variant": {
+    "suffix": "gamma",
+    "port": 8003,
+    "version": "v3"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "attempt",
+      "attempt": 0,
+      "result": "ConnectionError: timeout"
+    },
+    {
+      "span_id": "s2",
+      "type": "attempt",
+      "attempt": 1,
+      "result": "ConnectionError: timeout"
+    },
+    {
+      "span_id": "s3",
+      "type": "attempt",
+      "attempt": 2,
+      "result": "ConnectionError: timeout"
+    },
+    {
+      "span_id": "s4",
+      "type": "retry_exhausted",
+      "total_attempts": 3,
+      "max_retries": 3,
+      "actual_return": {
+        "ok": false,
+        "attempts": 3,
+        "error": "all retries exhausted"
+      },
+      "note": "expected 4 attempts (1 initial + 3 retries), only got 3"
+    }
+  ]
+}

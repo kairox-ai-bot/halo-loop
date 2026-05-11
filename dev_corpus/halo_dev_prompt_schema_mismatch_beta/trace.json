@@ -1,0 +1,48 @@
+{
+  "task_id": "halo_dev_prompt_schema_mismatch_beta",
+  "failure_class": "prompt_schema_mismatch",
+  "variant": {
+    "suffix": "beta",
+    "port": 8002,
+    "version": "v2"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "tool_result_build",
+      "fields_used": [
+        "role",
+        "tool_call_id",
+        "content"
+      ],
+      "actual_output": {
+        "role": "tool",
+        "tool_call_id": "tc_1",
+        "content": "search results here"
+      }
+    },
+    {
+      "span_id": "s2",
+      "type": "validation",
+      "schema_required": [
+        "role",
+        "tool_call_id",
+        "output"
+      ],
+      "actual_fields_present": [
+        "role",
+        "tool_call_id",
+        "content"
+      ],
+      "passed": true,
+      "field_mismatch": "expected 'output', got 'content'"
+    },
+    {
+      "span_id": "s3",
+      "type": "model_response",
+      "response": "",
+      "finish_reason": "error",
+      "error_detail": "tool message missing 'output' field per API contract"
+    }
+  ]
+}

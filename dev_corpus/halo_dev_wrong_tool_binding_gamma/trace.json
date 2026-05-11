@@ -1,0 +1,47 @@
+{
+  "task_id": "halo_dev_wrong_tool_binding_gamma",
+  "failure_class": "wrong_tool_binding",
+  "variant": {
+    "suffix": "gamma",
+    "port": 8003,
+    "version": "v3"
+  },
+  "spans": [
+    {
+      "span_id": "s1",
+      "type": "model_call",
+      "model_output": {
+        "tool_calls": [
+          {
+            "function": {
+              "name": "search_database",
+              "arguments": {
+                "query": "laptop"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "span_id": "s2",
+      "type": "tool_dispatch",
+      "requested_tool": "search_database",
+      "actual_tool": "query_cache",
+      "tool_output": {
+        "cached": true,
+        "data": [],
+        "source": "cache"
+      }
+    },
+    {
+      "span_id": "s3",
+      "type": "result",
+      "returned_to_model": {
+        "cached": true,
+        "data": [],
+        "source": "cache"
+      }
+    }
+  ]
+}

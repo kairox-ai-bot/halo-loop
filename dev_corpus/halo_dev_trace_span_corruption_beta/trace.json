@@ -1,0 +1,41 @@
+{
+  "task_id": "halo_dev_trace_span_corruption_beta",
+  "failure_class": "trace_span_corruption",
+  "variant": {
+    "suffix": "beta",
+    "port": 8002,
+    "version": "v2"
+  },
+  "spans": [
+    {
+      "span_id": "abc1",
+      "type": "model_call",
+      "parent_id": null,
+      "result": {
+        "action": "search",
+        "params": {
+          "q": "test"
+        }
+      }
+    },
+    {
+      "span_id": "def2",
+      "type": "tool_call",
+      "parent_id": "abc1",
+      "result": {
+        "found": true,
+        "items": [
+          "item1",
+          "item2"
+        ]
+      }
+    },
+    {
+      "span_id": "ghi3",
+      "type": "model_response",
+      "parent_id": "abc1",
+      "actual_parent_id": "def2",
+      "result": "Here are the results: item1, item2"
+    }
+  ]
+}
